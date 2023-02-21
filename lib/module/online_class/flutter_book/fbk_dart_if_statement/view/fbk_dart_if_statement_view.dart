@@ -11,6 +11,12 @@ class FbkDartIfStatementView extends StatefulWidget {
     // Jika angka number adalah ganjil, maka assign variabel result dengan string "Ganjil".
     String? result;
 
+    if (number % 2 == 0) {
+      result = "Genap";
+    } else {
+      result = "Ganjil";
+    }
+
     return result == "Ganjil";
   }
 

@@ -7,6 +7,7 @@ class FbkDartVariableView extends StatefulWidget {
   bool? exercise1() {
     //Ubah tipe data variable dibawah ini menjadi String
     int price = 100;
+
     return price is String;
   }
 
@@ -16,6 +17,7 @@ class FbkDartVariableView extends StatefulWidget {
     //Ubahlah variable text di atas menjadi double,
     //dan isilah varibel price dengan hasil konversinya
     //di bagian bawah
+    price = double.tryParse(text);
     return price == 100.24;
   }
 
@@ -26,10 +28,9 @@ class FbkDartVariableView extends StatefulWidget {
     //[TIPS] Hilangkan semua String selain angka 0-9 dan titik.
     //Gunakan Regex seperti ini: .replaceAll(RegExp(r'[^\d.]'), '')
 
-    /*
     String text = "300.24a";
+    text = text.replaceAll(RegExp(r'[^\d.]'), '');
     price = double.parse(text);
-    */
 
     return price == 300.24;
   }
@@ -38,6 +39,8 @@ class FbkDartVariableView extends StatefulWidget {
     int input = 12;
     // Tuliskan kode untuk memverifikasi apakah input adalah bilangan ganjil
     bool? output;
+
+    (input % 2 == 0) ? output = true : false;
 
     return output == true;
   }
@@ -49,9 +52,10 @@ class FbkDartVariableView extends StatefulWidget {
     //Kode dibawah akan error jika di jalankan,
     //Perbaiki dengan meng-gunakan .tryParse("300aa")??0
     //Sehingga ketika parameter-nya tidak valid, nilainya menjadi 0
-    /*
-    total = double.parse("300aa");
-    */
+
+    total = double.tryParse("300aa") ?? 0;
+    // total = double.tryParse(total) ?? 0;
+
     return total != null;
   }
 
@@ -63,9 +67,7 @@ class FbkDartVariableView extends StatefulWidget {
     //Perbaiki dengan meng-gunakan .tryParse("39ads")??0
     //Sehingga ketika parameter-nya tidak valid, nilainya menjadi 0
 
-    /*
-    age = int.parse("39ads");
-    */
+    age = int.tryParse("39ads") ?? 0;
 
     return age != null;
   }
@@ -78,9 +80,9 @@ class FbkDartVariableView extends StatefulWidget {
     //Perbaiki dengan meng-gunakan .tryParse("39ads")??0
     //Sehingga ketika parameter-nya tidak valid, nilainya menjadi 0
 
-    /*
-    age = int.parse("39ads");
-    */
+    int age = int.tryParse("39ads") ?? 0;
+    name = age.toString();
+
     return name != null;
   }
 
@@ -97,6 +99,9 @@ class FbkDartVariableView extends StatefulWidget {
     String? name;
     //Berdasarkan referensi di atas,
     //Ambil text diantara ' dan ' pada variable text
+    int startIndex = text.indexOf("'") + 1;
+    int lastIndex = text.lastIndexOf("'");
+    name = text.substring(startIndex, lastIndex);
     return name == "Deny";
   }
 
@@ -109,6 +114,13 @@ class FbkDartVariableView extends StatefulWidget {
     [TIPS] Gunakan for untuk mendapatkan total.
     Gunakan numbers.length untuk mendapatkan panjang List
     */
+
+    for (var number in numbers) {
+      total += number;
+    }
+
+    average = total / numbers.length;
+
     return average.toStringAsFixed(2) == "57.43";
   }
 
@@ -122,6 +134,11 @@ class FbkDartVariableView extends StatefulWidget {
     int minValue = 0;
     int maxValue = 0;
 
+    numbers.sort();
+
+    minValue = numbers.first;
+    maxValue = numbers.last;
+
     return minValue == 23 && maxValue == 109;
   }
 
@@ -130,6 +147,8 @@ class FbkDartVariableView extends StatefulWidget {
     // Tuliskan kode untuk menambahkan 5 pada input
     int? output;
 
+    output = input + 5;
+
     return output == 15;
   }
 
@@ -137,6 +156,7 @@ class FbkDartVariableView extends StatefulWidget {
     int input = 10;
     // Tuliskan kode untuk mengurangi 5 pada input
     int? output;
+    output = input - 5;
 
     return output == 5;
   }
@@ -147,6 +167,8 @@ class FbkDartVariableView extends StatefulWidget {
     // Tuliskan kode untuk menjumlahkan input1 dan input2
     int? output;
 
+    output = input1 + input2;
+
     return output == 30;
   }
 
@@ -156,6 +178,8 @@ class FbkDartVariableView extends StatefulWidget {
     // Tuliskan kode untuk mengurangi input2 dengan input1
     int? output;
 
+    output = input2 - input1;
+
     return output == 10;
   }
 
@@ -164,6 +188,7 @@ class FbkDartVariableView extends StatefulWidget {
     int input2 = 20;
     // Tuliskan kode untuk membagi input2 dengan input1
     double? output;
+    output = input2 / input1;
 
     return output == 2.0;
   }
@@ -173,6 +198,7 @@ class FbkDartVariableView extends StatefulWidget {
     int input2 = 20;
     // Tuliskan kode untuk mengalikan input1 dan input2
     int? output;
+    output = input2 * input1;
 
     return output == 200;
   }
@@ -182,6 +208,7 @@ class FbkDartVariableView extends StatefulWidget {
     int input2 = 20;
     // Tuliskan kode untuk menghitung sisa bagi input2 dengan input1
     int? output;
+    output = input2 % input1;
 
     return output == 0;
   }
@@ -191,6 +218,8 @@ class FbkDartVariableView extends StatefulWidget {
     // Tuliskan kode untuk menambahkan " World!" pada input
     String? output;
 
+    output = "$input World!";
+
     return output == "Hello World!";
   }
 
@@ -198,6 +227,8 @@ class FbkDartVariableView extends StatefulWidget {
     String input = "Hello World!";
     // Tuliskan kode untuk mengambil kata pertama dari input
     String? output;
+    List listInput = input.split(' ');
+    output = listInput.first;
 
     return output == "Hello";
   }
@@ -206,6 +237,8 @@ class FbkDartVariableView extends StatefulWidget {
     String input = "Hello World!";
     // Tuliskan kode untuk mengambil kata kedua dari input
     String? output;
+    List listInput = input.split(' ');
+    output = listInput.last;
 
     return output == "World!";
   }
@@ -214,6 +247,7 @@ class FbkDartVariableView extends StatefulWidget {
     int input = 12345;
     // Tuliskan kode untuk memverifikasi apakah input adalah bilangan genap
     bool? output;
+    output = (input % 2 == 0) ? true : false;
 
     return output == false;
   }
@@ -222,6 +256,7 @@ class FbkDartVariableView extends StatefulWidget {
     int input = 12345;
     // Tuliskan kode untuk memverifikasi apakah input adalah bilangan ganjil
     bool? output;
+    output = (input % 2 != 0) ? true : false;
 
     return output == true;
   }
@@ -230,6 +265,7 @@ class FbkDartVariableView extends StatefulWidget {
     String input = "Dart";
     // Tuliskan kode untuk memverifikasi apakah input memiliki panjang lebih dari 3 karakter
     bool? output;
+    output = (input.length > 3) ? true : false;
 
     return output == true;
   }
@@ -238,6 +274,7 @@ class FbkDartVariableView extends StatefulWidget {
     String input = "Dart";
     // Tuliskan kode untuk memverifikasi apakah input memiliki panjang sama dengan 3 karakter
     bool? output;
+    output = (input.length == 3) ? true : false;
 
     return output == false;
   }
@@ -246,6 +283,7 @@ class FbkDartVariableView extends StatefulWidget {
     String input = "Dart";
     // Tuliskan kode untuk memverifikasi apakah input memiliki huruf pertama 'D'
     bool? output;
+    output = (input[0] == "D") ? true : false;
 
     return output == true;
   }
@@ -254,6 +292,7 @@ class FbkDartVariableView extends StatefulWidget {
     String input = "Dart";
     // Tuliskan kode untuk memverifikasi apakah input memiliki huruf terakhir 't'
     bool? output;
+    output = (input[input.length - 1] == "t") ? true : false;
 
     return output == true;
   }
@@ -262,6 +301,7 @@ class FbkDartVariableView extends StatefulWidget {
     int input = 12345;
     // Tuliskan kode untuk memverifikasi apakah input memiliki 5 digit
     bool? output;
+    output = (input.toString().length == 5) ? true : false;
 
     return output == true;
   }
@@ -270,6 +310,7 @@ class FbkDartVariableView extends StatefulWidget {
     int input = 12345;
     // Tuliskan kode untuk memverifikasi apakah input memiliki 4 digit
     bool? output;
+    output = (input.toString().length == 4) ? true : false;
 
     return output == false;
   }
@@ -278,6 +319,8 @@ class FbkDartVariableView extends StatefulWidget {
     double input = 123.45;
     // Tuliskan kode untuk memverifikasi apakah input memiliki 2 digit setelah koma
     bool? output;
+    var check = input.toString().split('.').last.length;
+    output = (check == 2) ? true : false;
 
     return output == true;
   }
@@ -286,6 +329,8 @@ class FbkDartVariableView extends StatefulWidget {
     double input = 123.45;
     // Tuliskan kode untuk memverifikasi apakah input memiliki 3 digit setelah koma
     bool? output;
+    var check = input.toString().split('.').last.length;
+    output = (check == 3) ? true : false;
 
     return output == false;
   }
@@ -294,6 +339,8 @@ class FbkDartVariableView extends StatefulWidget {
     String input = "Hello World";
 // Tuliskan kode untuk memverifikasi apakah input adalah palindrome
     bool? output;
+    String palindromeString = input.split('').reversed.join();
+    output = (input == palindromeString) ? true : false;
 
     return output == false;
   }
@@ -302,6 +349,7 @@ class FbkDartVariableView extends StatefulWidget {
     String input = "Dart is Awesome";
 // Tuliskan kode untuk mengubah input menjadi huruf kecil semua dan memisahkan kata dengan spasi menjadi underscore
     String? output;
+    output = input.toLowerCase().replaceAll(' ', '_');
 
     return output == "dart_is_awesome";
   }
@@ -310,6 +358,7 @@ class FbkDartVariableView extends StatefulWidget {
     String input = "1234";
 // Tuliskan kode untuk memverifikasi apakah input adalah angka
     bool? output;
+    output = ((int.tryParse(input) ?? 0) is int) ? true : false;
 
     return output == true;
   }
@@ -317,8 +366,10 @@ class FbkDartVariableView extends StatefulWidget {
   bool exercise34() {
     String input =
         "Dart is a client-optimized programming language for fast apps on multiple platforms.";
-// Tuliskan kode untuk membatasi jumlah karakter pada input menjadi 50 karakter
+// Tuliskan kode untuk  jumlah karakter pada input menjadi 50 karakter
     String? output;
+
+    output = input.replaceRange(47, input.length, '...');
 
     return output == "Dart is a client-optimized programming language...";
   }
@@ -328,6 +379,7 @@ class FbkDartVariableView extends StatefulWidget {
         "Dart is a client-optimized programming language for fast apps on multiple platforms.";
 // Tuliskan kode untuk memverifikasi apakah kata "Dart" muncul pada input
     bool? output;
+    output = (input.contains('Dart')) ? true : false;
 
     return output == true;
   }

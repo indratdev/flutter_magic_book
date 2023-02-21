@@ -5,4 +5,4 @@ https://www.figma.com/file/PreoFlFsdSfKIGFpNGwaT8/Flutter-MagicBook?node-id=305%
 ---
 
 Repository:<br>
-git clone https://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@github.com/denyocrworld/flutter_magic_book.git<br>
+git clone https://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@github.com/denyocrworld/flutter_magic_book.git<br>"# flutter_magic_book" 
